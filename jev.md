@@ -114,6 +114,25 @@ Declare the outcome set  →  Hand Jev the input  →  Get back the typed value
 
 ---
 
+## Jev in a real system — the hybrid pattern
+
+In production you rarely choose *only* an LLM or *only* Jev. The strongest systems run **two lanes** and route each piece of work to the right one:
+
+![Jev in a real system](jev-architecture.svg)
+
+- **Generative lane (LLM)** — does the *language*: drafting, summarizing, chatting. Its output is prose for a **human** to read.
+- **Decision lane (Jev)** — does the *committing*: interprets meaning and returns one **typed, bounded** outcome for **code** to act on — no parsing, no retry.
+- **They can hand off** — an LLM can produce text that Jev then turns into a decision (e.g. summarize a ticket, then decide its queue).
+- **Every Jev decision is audited** — because outcomes are enumerable and reproducible, each one is testable and replayable.
+
+### A concrete flow
+
+A support ticket arrives at the **API + orchestrator**. In parallel: the **LLM** writes a one-line summary for the human agent, while **Jev** reads the raw ticket and returns a typed `SupportQueue` value. The orchestrator uses that typed decision to **route** the ticket and writes it to an **audit log** — no `try/parse/validate/retry` in between. The LLM produced language for a person; Jev produced a decision for the system. Neither did the other's job.
+
+> **Design rule:** put an LLM where you need *prose*, and put Jev at **every boundary where the system must commit to a bounded, trustworthy outcome**.
+
+---
+
 ## Jev vs an LLM — at a glance
 
 | | Generative LLM | Jev |

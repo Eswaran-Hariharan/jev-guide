@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" font-family="'Segoe UI', Arial, sans-serif" role="img" aria-label="Jev in a real system: LLM lane plus Jev decision lane">
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#7b8794"/></marker>
+    <marker id="at" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#01a88d"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#ec7211"/></marker>
+    <style>
+      .t{fill:#fff;font-weight:600}
+      .st{fill:#eef;font-size:10.5px}
+      .lbl{fill:#5a6b7b;font-size:11.5px}
+      .hd{font-size:12.5px;font-weight:800;letter-spacing:1px}
+      .mono{font-family:Consolas,monospace}
+    </style>
+  </defs>
+
+  <rect width="1200" height="660" rx="14" fill="#f6fbfa"/>
+  <text x="34" y="44" font-size="23" font-weight="800" fill="#12403a">Jev in a real system — the hybrid pattern</text>
+  <text x="34" y="68" class="lbl">An LLM handles language; Jev handles every point where the system must commit to a typed decision.</text>
+
+  <!-- Client -->
+  <rect x="34" y="120" width="150" height="90" rx="12" fill="#0f1b2d"/>
+  <text x="109" y="158" text-anchor="middle" class="t" font-size="13">Client</text>
+  <text x="109" y="178" text-anchor="middle" class="st">request / event</text>
+
+  <!-- API + orchestrator -->
+  <rect x="214" y="110" width="150" height="110" rx="12" fill="#2f6fed"/>
+  <text x="289" y="150" text-anchor="middle" class="t" font-size="13">API +</text>
+  <text x="289" y="170" text-anchor="middle" class="t" font-size="13">Orchestrator</text>
+  <text x="289" y="192" text-anchor="middle" class="st">routes work to lanes</text>
+
+  <!-- ===== LLM LANE ===== -->
+  <text x="430" y="104" class="hd" fill="#ec7211">GENERATIVE LANE (language)</text>
+  <rect x="430" y="116" width="330" height="150" rx="12" fill="#fdf2e7" stroke="#ec7211" stroke-width="2"/>
+  <rect x="452" y="140" width="286" height="46" rx="8" fill="#ec7211"/>
+  <text x="595" y="168" text-anchor="middle" class="t" font-size="13">LLM (generative)</text>
+  <text x="452" y="210" class="lbl" font-size="11">drafts, summarizes, chats — free-form text</text>
+  <text x="452" y="230" class="lbl" font-size="11">for a HUMAN to read</text>
+  <rect x="452" y="240" width="286" height="18" rx="4" fill="#fff" stroke="#f0c9a3"/>
+  <text x="462" y="253" class="mono" font-size="10" fill="#a5651f">"Here is a summary of the ticket…"</text>
+
+  <!-- ===== JEV LANE ===== -->
+  <text x="430" y="312" class="hd" fill="#01a88d">DECISION LANE (type-safe)</text>
+  <rect x="430" y="324" width="330" height="170" rx="12" fill="#e6f7f2" stroke="#01a88d" stroke-width="2"/>
+  <rect x="452" y="348" width="286" height="46" rx="8" fill="#01a88d"/>
+  <text x="595" y="376" text-anchor="middle" class="t" font-size="13">Jev (non-generative)</text>
+  <text x="452" y="418" class="lbl" font-size="11">interprets meaning → picks ONE outcome</text>
+  <rect x="452" y="428" width="286" height="20" rx="4" fill="#fff" stroke="#a8e0d4"/>
+  <text x="462" y="442" class="mono" font-size="10" fill="#12776a">outcome ∈ {BILLING, TECH, ABUSE, …}</text>
+  <text x="452" y="470" class="lbl" font-size="11">for CODE to act on — typed, bounded</text>
+  <rect x="452" y="476" width="286" height="10" rx="3" fill="#01a88d" opacity="0.25"/>
+
+  <!-- ===== TYPED DECISION + ACTION ===== -->
+  <text x="820" y="312" class="hd" fill="#01a88d">TYPED DECISION</text>
+  <rect x="820" y="324" width="150" height="60" rx="10" fill="#01a88d"/>
+  <text x="895" y="352" text-anchor="middle" class="t mono" font-size="15">BILLING</text>
+  <text x="895" y="372" text-anchor="middle" class="st">guaranteed valid</text>
+
+  <!-- action -->
+  <rect x="1000" y="316" width="166" height="78" rx="10" fill="#8a52c9"/>
+  <text x="1083" y="348" text-anchor="middle" class="t" font-size="12">Action</text>
+  <text x="1083" y="368" text-anchor="middle" class="st">route · gate · assign</text>
+  <text x="1083" y="384" text-anchor="middle" class="st">no parse/retry</text>
+
+  <!-- audit -->
+  <rect x="820" y="416" width="346" height="66" rx="10" fill="#fff" stroke="#d64545" stroke-width="1.5"/>
+  <text x="838" y="442" font-size="12" font-weight="700" fill="#d64545">Audit log (enumerable · reproducible)</text>
+  <text x="838" y="462" class="lbl" font-size="11">every decision is testable and replayable</text>
+
+  <!-- ===== ARROWS ===== -->
+  <line x1="184" y1="165" x2="212" y2="165" stroke="#7b8794" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="364" y1="150" x2="428" y2="180" stroke="#ec7211" stroke-width="2.5" marker-end="url(#ao)"/>
+  <text x="366" y="140" class="lbl" font-size="10" fill="#ec7211">language?</text>
+  <line x1="364" y1="185" x2="428" y2="380" stroke="#01a88d" stroke-width="2.5" marker-end="url(#at)"/>
+  <text x="360" y="300" class="lbl" font-size="10" fill="#01a88d">decision?</text>
+
+  <line x1="760" y1="371" x2="818" y2="356" stroke="#01a88d" stroke-width="2.5" marker-end="url(#at)"/>
+  <line x1="970" y1="354" x2="998" y2="354" stroke="#8a52c9" stroke-width="2.5" marker-end="url(#a)"/>
+  <line x1="895" y1="384" x2="895" y2="414" stroke="#d64545" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- optional LLM->Jev handoff -->
+  <line x1="595" y1="266" x2="595" y2="322" stroke="#9aa7b5" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <text x="605" y="298" class="lbl" font-size="10">LLM text can feed Jev to decide</text>
+
+  <!-- legend -->
+  <rect x="34" y="560" width="1132" height="60" rx="10" fill="#eef4f3" stroke="#d5e3df"/>
+  <circle cx="60" cy="583" r="7" fill="#ec7211"/><text x="74" y="587" class="lbl">Generative lane — an LLM writes language for people</text>
+  <circle cx="470" cy="583" r="7" fill="#01a88d"/><text x="484" y="587" class="lbl">Decision lane — Jev commits to a typed, bounded outcome for code</text>
+  <text x="60" y="606" class="lbl" font-style="italic">The system uses both: language where you need prose, Jev wherever you need a trustworthy decision.</text>
+</svg>
