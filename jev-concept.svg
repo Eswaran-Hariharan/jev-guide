@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 640" font-family="'Segoe UI', Arial, sans-serif" role="img" aria-label="Jev concept: input to semantic interpretation to type-safe decision">
+  <defs>
+    <marker id="jr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#01a88d"/></marker>
+    <marker id="jg" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#9aa7b5"/></marker>
+    <style>
+      .t{fill:#fff;font-weight:600}
+      .st{fill:#eafaf6;font-size:11px}
+      .lbl{fill:#5a6b7b;font-size:12px}
+      .hd{font-size:13px;font-weight:800;letter-spacing:1px}
+      .mono{font-family:Consolas,monospace}
+    </style>
+  </defs>
+
+  <rect width="1180" height="640" rx="14" fill="#f6fbfa"/>
+  <text x="34" y="46" font-size="24" font-weight="800" fill="#12403a">Jev — a non-generative semantic decision engine</text>
+  <text x="34" y="70" class="lbl">Interpret meaning → commit to one type-safe outcome (no prose, no parsing)</text>
+
+  <!-- INPUT -->
+  <text x="40" y="126" class="hd" fill="#5a6b7b">INPUT</text>
+  <rect x="40" y="140" width="200" height="120" rx="12" fill="#fff" stroke="#cfd8e0" stroke-width="1.5"/>
+  <text x="60" y="172" class="lbl" font-size="12">Unstructured input</text>
+  <rect x="58" y="186" width="164" height="56" rx="8" fill="#eef2f6"/>
+  <text x="70" y="208" class="mono" font-size="10.5" fill="#445">"I was charged twice</text>
+  <text x="70" y="224" class="mono" font-size="10.5" fill="#445"> and want a refund"</text>
+
+  <!-- JEV ENGINE -->
+  <text x="300" y="126" class="hd" fill="#01a88d">JEV ENGINE</text>
+  <rect x="300" y="140" width="470" height="360" rx="14" fill="#e6f7f2" stroke="#01a88d" stroke-width="2"/>
+
+  <rect x="326" y="166" width="418" height="70" rx="10" fill="#01a88d"/>
+  <text x="346" y="196" class="t" font-size="14">① Semantic parse</text>
+  <text x="346" y="217" class="st">understand what the input MEANS</text>
+
+  <rect x="326" y="250" width="418" height="70" rx="10" fill="#12b39a"/>
+  <text x="346" y="280" class="t" font-size="14">② Constrained decision</text>
+  <text x="346" y="301" class="st">map meaning onto YOUR outcome set — nothing else is reachable</text>
+
+  <rect x="326" y="334" width="418" height="70" rx="10" fill="#1ec9ad"/>
+  <text x="346" y="364" class="t" font-size="14">③ Type-safe emit</text>
+  <text x="346" y="385" class="st">return a value guaranteed to match the schema</text>
+
+  <!-- outcome set chip -->
+  <rect x="326" y="420" width="418" height="60" rx="10" fill="#fff" stroke="#01a88d"/>
+  <text x="346" y="442" class="lbl" font-size="11">Outcome set (closed / bounded):</text>
+  <text x="346" y="464" class="mono" font-size="12" fill="#12403a">BILLING · TECHNICAL · ACCOUNT · SALES · ABUSE</text>
+
+  <!-- OUTPUT -->
+  <text x="830" y="126" class="hd" fill="#01a88d">TYPED DECISION</text>
+  <rect x="830" y="140" width="310" height="150" rx="12" fill="#fff" stroke="#01a88d" stroke-width="2"/>
+  <rect x="852" y="164" width="266" height="50" rx="8" fill="#01a88d"/>
+  <text x="985" y="195" text-anchor="middle" class="t mono" font-size="16">BILLING</text>
+  <text x="852" y="238" class="lbl" font-size="11.5">✓ one of the 5 outcomes — guaranteed</text>
+  <text x="852" y="258" class="lbl" font-size="11.5">✓ no parse · no repair · no retry</text>
+  <text x="852" y="278" class="lbl" font-size="11.5">✓ compiler already trusts it</text>
+
+  <!-- downstream code -->
+  <rect x="830" y="308" width="310" height="96" rx="12" fill="#0f1b2d"/>
+  <text x="850" y="332" class="mono" font-size="11" fill="#7fd8c6">switch (queue) {</text>
+  <text x="862" y="352" class="mono" font-size="11" fill="#cdd4de">case BILLING: assignBilling()</text>
+  <text x="862" y="372" class="mono" font-size="11" fill="#cdd4de">case ABUSE:   escalate()</text>
+  <text x="850" y="392" class="mono" font-size="11" fill="#7fd8c6">}</text>
+
+  <!-- Contrast: LLM path -->
+  <rect x="830" y="424" width="310" height="120" rx="12" fill="#f4f2fb" stroke="#9aa7b5" stroke-dasharray="5 4"/>
+  <text x="850" y="446" font-size="12" font-weight="700" fill="#7b8794">vs a generative LLM</text>
+  <text x="850" y="466" class="lbl" font-size="10.5">text → strip fences → JSON.parse →</text>
+  <text x="850" y="482" class="lbl" font-size="10.5">validate → check allowed → retry…</text>
+  <text x="850" y="502" class="lbl" font-size="10.5">plausible-but-wrong is possible</text>
+  <text x="850" y="522" class="lbl" font-size="10.5" font-style="italic">Jev collapses all of this away.</text>
+
+  <!-- arrows -->
+  <line x1="240" y1="200" x2="298" y2="200" stroke="#01a88d" stroke-width="2.5" marker-end="url(#jr)"/>
+  <line x1="770" y1="215" x2="828" y2="200" stroke="#01a88d" stroke-width="2.5" marker-end="url(#jr)"/>
+
+  <text x="34" y="600" class="lbl" font-size="12" font-style="italic">Mental model: an LLM is a writer; Jev is a judge. It does not produce prose — it produces type-safe data.</text>
+</svg>
